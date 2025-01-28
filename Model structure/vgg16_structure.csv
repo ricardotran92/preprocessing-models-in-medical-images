@@ -1,0 +1,854 @@
+model,layer_name,layer_type,input_shape,output_shape,parameters,is_trainable,layer_attributes,activation_function,kernel_size,use_bias,padding,strides,pooling_size,dropout_rate,reshape_target_shape
+vgg16,input_layer_33,InputLayer,[],"(None, 224, 224, 3)",0,False,"{
+  ""batch_shape"": [
+    null,
+    224,
+    224,
+    3
+  ],
+  ""dtype"": ""float32"",
+  ""sparse"": false,
+  ""name"": ""input_layer_33""
+}",,,,,,,,
+vgg16,block1_conv1,Conv2D,"(None, 224, 224, 3)","(None, 224, 224, 64)",1792,False,"{
+  ""name"": ""block1_conv1"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 64,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""relu"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",relu,"(3, 3)",True,same,"(1, 1)",,,
+vgg16,block1_conv2,Conv2D,"(None, 224, 224, 64)","(None, 224, 224, 64)",36928,False,"{
+  ""name"": ""block1_conv2"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 64,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""relu"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",relu,"(3, 3)",True,same,"(1, 1)",,,
+vgg16,block1_pool,MaxPooling2D,"(None, 224, 224, 64)","(None, 112, 112, 64)",0,False,"{
+  ""name"": ""block1_pool"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""pool_size"": [
+    2,
+    2
+  ],
+  ""padding"": ""valid"",
+  ""strides"": [
+    2,
+    2
+  ],
+  ""data_format"": ""channels_last""
+}",,,,valid,"(2, 2)","(2, 2)",,
+vgg16,block2_conv1,Conv2D,"(None, 112, 112, 64)","(None, 112, 112, 128)",73856,False,"{
+  ""name"": ""block2_conv1"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 128,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""relu"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",relu,"(3, 3)",True,same,"(1, 1)",,,
+vgg16,block2_conv2,Conv2D,"(None, 112, 112, 128)","(None, 112, 112, 128)",147584,False,"{
+  ""name"": ""block2_conv2"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 128,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""relu"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",relu,"(3, 3)",True,same,"(1, 1)",,,
+vgg16,block2_pool,MaxPooling2D,"(None, 112, 112, 128)","(None, 56, 56, 128)",0,False,"{
+  ""name"": ""block2_pool"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""pool_size"": [
+    2,
+    2
+  ],
+  ""padding"": ""valid"",
+  ""strides"": [
+    2,
+    2
+  ],
+  ""data_format"": ""channels_last""
+}",,,,valid,"(2, 2)","(2, 2)",,
+vgg16,block3_conv1,Conv2D,"(None, 56, 56, 128)","(None, 56, 56, 256)",295168,False,"{
+  ""name"": ""block3_conv1"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 256,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""relu"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",relu,"(3, 3)",True,same,"(1, 1)",,,
+vgg16,block3_conv2,Conv2D,"(None, 56, 56, 256)","(None, 56, 56, 256)",590080,False,"{
+  ""name"": ""block3_conv2"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 256,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""relu"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",relu,"(3, 3)",True,same,"(1, 1)",,,
+vgg16,block3_conv3,Conv2D,"(None, 56, 56, 256)","(None, 56, 56, 256)",590080,False,"{
+  ""name"": ""block3_conv3"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 256,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""relu"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",relu,"(3, 3)",True,same,"(1, 1)",,,
+vgg16,block3_pool,MaxPooling2D,"(None, 56, 56, 256)","(None, 28, 28, 256)",0,False,"{
+  ""name"": ""block3_pool"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""pool_size"": [
+    2,
+    2
+  ],
+  ""padding"": ""valid"",
+  ""strides"": [
+    2,
+    2
+  ],
+  ""data_format"": ""channels_last""
+}",,,,valid,"(2, 2)","(2, 2)",,
+vgg16,block4_conv1,Conv2D,"(None, 28, 28, 256)","(None, 28, 28, 512)",1180160,False,"{
+  ""name"": ""block4_conv1"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 512,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""relu"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",relu,"(3, 3)",True,same,"(1, 1)",,,
+vgg16,block4_conv2,Conv2D,"(None, 28, 28, 512)","(None, 28, 28, 512)",2359808,False,"{
+  ""name"": ""block4_conv2"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 512,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""relu"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",relu,"(3, 3)",True,same,"(1, 1)",,,
+vgg16,block4_conv3,Conv2D,"(None, 28, 28, 512)","(None, 28, 28, 512)",2359808,False,"{
+  ""name"": ""block4_conv3"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 512,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""relu"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",relu,"(3, 3)",True,same,"(1, 1)",,,
+vgg16,block4_pool,MaxPooling2D,"(None, 28, 28, 512)","(None, 14, 14, 512)",0,False,"{
+  ""name"": ""block4_pool"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""pool_size"": [
+    2,
+    2
+  ],
+  ""padding"": ""valid"",
+  ""strides"": [
+    2,
+    2
+  ],
+  ""data_format"": ""channels_last""
+}",,,,valid,"(2, 2)","(2, 2)",,
+vgg16,block5_conv1,Conv2D,"(None, 14, 14, 512)","(None, 14, 14, 512)",2359808,False,"{
+  ""name"": ""block5_conv1"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 512,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""relu"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",relu,"(3, 3)",True,same,"(1, 1)",,,
+vgg16,block5_conv2,Conv2D,"(None, 14, 14, 512)","(None, 14, 14, 512)",2359808,False,"{
+  ""name"": ""block5_conv2"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 512,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""relu"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",relu,"(3, 3)",True,same,"(1, 1)",,,
+vgg16,block5_conv3,Conv2D,"(None, 14, 14, 512)","(None, 14, 14, 512)",2359808,False,"{
+  ""name"": ""block5_conv3"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 512,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""relu"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",relu,"(3, 3)",True,same,"(1, 1)",,,
+vgg16,block5_pool,MaxPooling2D,"(None, 14, 14, 512)","(None, 7, 7, 512)",0,False,"{
+  ""name"": ""block5_pool"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""pool_size"": [
+    2,
+    2
+  ],
+  ""padding"": ""valid"",
+  ""strides"": [
+    2,
+    2
+  ],
+  ""data_format"": ""channels_last""
+}",,,,valid,"(2, 2)","(2, 2)",,
+vgg16,global_average_pooling2d_33,GlobalAveragePooling2D,"(None, 7, 7, 512)","(None, 512)",0,True,"{
+  ""name"": ""global_average_pooling2d_33"",
+  ""trainable"": true,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""data_format"": ""channels_last"",
+  ""keepdims"": false
+}",,,,,,,,
+vgg16,dropout_33,Dropout,"(None, 512)","(None, 512)",0,True,"{
+  ""name"": ""dropout_33"",
+  ""trainable"": true,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""rate"": 0.4,
+  ""seed"": null,
+  ""noise_shape"": null
+}",,,,,,,0.4,
+vgg16,dense_66,Dense,"(None, 512)","(None, 1024)",525312,True,"{
+  ""name"": ""dense_66"",
+  ""trainable"": true,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""units"": 1024,
+  ""activation"": ""relu"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",relu,,True,,,,,
+vgg16,dense_67,Dense,"(None, 1024)","(None, 1)",1025,True,"{
+  ""name"": ""dense_67"",
+  ""trainable"": true,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""units"": 1,
+  ""activation"": ""sigmoid"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",sigmoid,,True,,,,,

@@ -1,0 +1,6039 @@
+model,layer_name,layer_type,input_shape,output_shape,parameters,is_trainable,layer_attributes,activation_function,kernel_size,use_bias,padding,strides,pooling_size,dropout_rate,reshape_target_shape
+resnet50,input_layer_31,InputLayer,[],"(None, 224, 224, 3)",0,False,"{
+  ""batch_shape"": [
+    null,
+    224,
+    224,
+    3
+  ],
+  ""dtype"": ""float32"",
+  ""sparse"": false,
+  ""name"": ""input_layer_31""
+}",,,,,,,,
+resnet50,conv1_pad,ZeroPadding2D,"(None, 224, 224, 3)","(None, 230, 230, 3)",0,False,"{
+  ""name"": ""conv1_pad"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""padding"": [
+    [
+      3,
+      3
+    ],
+    [
+      3,
+      3
+    ]
+  ],
+  ""data_format"": ""channels_last""
+}",,,,"((3, 3), (3, 3))",,,,
+resnet50,conv1_conv,Conv2D,"(None, 230, 230, 3)","(None, 112, 112, 64)",9472,False,"{
+  ""name"": ""conv1_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 64,
+  ""kernel_size"": [
+    7,
+    7
+  ],
+  ""strides"": [
+    2,
+    2
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(7, 7)",True,valid,"(2, 2)",,,
+resnet50,conv1_bn,BatchNormalization,"(None, 112, 112, 64)","(None, 112, 112, 64)",256,False,"{
+  ""name"": ""conv1_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv1_relu,Activation,"(None, 112, 112, 64)","(None, 112, 112, 64)",0,False,"{
+  ""name"": ""conv1_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,pool1_pad,ZeroPadding2D,"(None, 112, 112, 64)","(None, 114, 114, 64)",0,False,"{
+  ""name"": ""pool1_pad"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""padding"": [
+    [
+      1,
+      1
+    ],
+    [
+      1,
+      1
+    ]
+  ],
+  ""data_format"": ""channels_last""
+}",,,,"((1, 1), (1, 1))",,,,
+resnet50,pool1_pool,MaxPooling2D,"(None, 114, 114, 64)","(None, 56, 56, 64)",0,False,"{
+  ""name"": ""pool1_pool"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""pool_size"": [
+    3,
+    3
+  ],
+  ""padding"": ""valid"",
+  ""strides"": [
+    2,
+    2
+  ],
+  ""data_format"": ""channels_last""
+}",,,,valid,"(2, 2)","(3, 3)",,
+resnet50,conv2_block1_1_conv,Conv2D,"(None, 56, 56, 64)","(None, 56, 56, 64)",4160,False,"{
+  ""name"": ""conv2_block1_1_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 64,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv2_block1_1_bn,BatchNormalization,"(None, 56, 56, 64)","(None, 56, 56, 64)",256,False,"{
+  ""name"": ""conv2_block1_1_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv2_block1_1_relu,Activation,"(None, 56, 56, 64)","(None, 56, 56, 64)",0,False,"{
+  ""name"": ""conv2_block1_1_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv2_block1_2_conv,Conv2D,"(None, 56, 56, 64)","(None, 56, 56, 64)",36928,False,"{
+  ""name"": ""conv2_block1_2_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 64,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(3, 3)",True,same,"(1, 1)",,,
+resnet50,conv2_block1_2_bn,BatchNormalization,"(None, 56, 56, 64)","(None, 56, 56, 64)",256,False,"{
+  ""name"": ""conv2_block1_2_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv2_block1_2_relu,Activation,"(None, 56, 56, 64)","(None, 56, 56, 64)",0,False,"{
+  ""name"": ""conv2_block1_2_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv2_block1_0_conv,Conv2D,"(None, 56, 56, 64)","(None, 56, 56, 256)",16640,False,"{
+  ""name"": ""conv2_block1_0_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 256,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv2_block1_3_conv,Conv2D,"(None, 56, 56, 64)","(None, 56, 56, 256)",16640,False,"{
+  ""name"": ""conv2_block1_3_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 256,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv2_block1_0_bn,BatchNormalization,"(None, 56, 56, 256)","(None, 56, 56, 256)",1024,False,"{
+  ""name"": ""conv2_block1_0_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv2_block1_3_bn,BatchNormalization,"(None, 56, 56, 256)","(None, 56, 56, 256)",1024,False,"{
+  ""name"": ""conv2_block1_3_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv2_block1_add,Add,"(None, 56, 56, 256), (None, 56, 56, 256)","(None, 56, 56, 256)",0,False,"{
+  ""name"": ""conv2_block1_add"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  }
+}",,,,,,,,
+resnet50,conv2_block1_out,Activation,"(None, 56, 56, 256)","(None, 56, 56, 256)",0,False,"{
+  ""name"": ""conv2_block1_out"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv2_block2_1_conv,Conv2D,"(None, 56, 56, 256)","(None, 56, 56, 64)",16448,False,"{
+  ""name"": ""conv2_block2_1_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 64,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv2_block2_1_bn,BatchNormalization,"(None, 56, 56, 64)","(None, 56, 56, 64)",256,False,"{
+  ""name"": ""conv2_block2_1_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv2_block2_1_relu,Activation,"(None, 56, 56, 64)","(None, 56, 56, 64)",0,False,"{
+  ""name"": ""conv2_block2_1_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv2_block2_2_conv,Conv2D,"(None, 56, 56, 64)","(None, 56, 56, 64)",36928,False,"{
+  ""name"": ""conv2_block2_2_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 64,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(3, 3)",True,same,"(1, 1)",,,
+resnet50,conv2_block2_2_bn,BatchNormalization,"(None, 56, 56, 64)","(None, 56, 56, 64)",256,False,"{
+  ""name"": ""conv2_block2_2_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv2_block2_2_relu,Activation,"(None, 56, 56, 64)","(None, 56, 56, 64)",0,False,"{
+  ""name"": ""conv2_block2_2_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv2_block2_3_conv,Conv2D,"(None, 56, 56, 64)","(None, 56, 56, 256)",16640,False,"{
+  ""name"": ""conv2_block2_3_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 256,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv2_block2_3_bn,BatchNormalization,"(None, 56, 56, 256)","(None, 56, 56, 256)",1024,False,"{
+  ""name"": ""conv2_block2_3_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv2_block2_add,Add,"(None, 56, 56, 256), (None, 56, 56, 256)","(None, 56, 56, 256)",0,False,"{
+  ""name"": ""conv2_block2_add"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  }
+}",,,,,,,,
+resnet50,conv2_block2_out,Activation,"(None, 56, 56, 256)","(None, 56, 56, 256)",0,False,"{
+  ""name"": ""conv2_block2_out"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv2_block3_1_conv,Conv2D,"(None, 56, 56, 256)","(None, 56, 56, 64)",16448,False,"{
+  ""name"": ""conv2_block3_1_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 64,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv2_block3_1_bn,BatchNormalization,"(None, 56, 56, 64)","(None, 56, 56, 64)",256,False,"{
+  ""name"": ""conv2_block3_1_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv2_block3_1_relu,Activation,"(None, 56, 56, 64)","(None, 56, 56, 64)",0,False,"{
+  ""name"": ""conv2_block3_1_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv2_block3_2_conv,Conv2D,"(None, 56, 56, 64)","(None, 56, 56, 64)",36928,False,"{
+  ""name"": ""conv2_block3_2_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 64,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(3, 3)",True,same,"(1, 1)",,,
+resnet50,conv2_block3_2_bn,BatchNormalization,"(None, 56, 56, 64)","(None, 56, 56, 64)",256,False,"{
+  ""name"": ""conv2_block3_2_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv2_block3_2_relu,Activation,"(None, 56, 56, 64)","(None, 56, 56, 64)",0,False,"{
+  ""name"": ""conv2_block3_2_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv2_block3_3_conv,Conv2D,"(None, 56, 56, 64)","(None, 56, 56, 256)",16640,False,"{
+  ""name"": ""conv2_block3_3_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 256,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv2_block3_3_bn,BatchNormalization,"(None, 56, 56, 256)","(None, 56, 56, 256)",1024,False,"{
+  ""name"": ""conv2_block3_3_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv2_block3_add,Add,"(None, 56, 56, 256), (None, 56, 56, 256)","(None, 56, 56, 256)",0,False,"{
+  ""name"": ""conv2_block3_add"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  }
+}",,,,,,,,
+resnet50,conv2_block3_out,Activation,"(None, 56, 56, 256)","(None, 56, 56, 256)",0,False,"{
+  ""name"": ""conv2_block3_out"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv3_block1_1_conv,Conv2D,"(None, 56, 56, 256)","(None, 28, 28, 128)",32896,False,"{
+  ""name"": ""conv3_block1_1_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 128,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    2,
+    2
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(2, 2)",,,
+resnet50,conv3_block1_1_bn,BatchNormalization,"(None, 28, 28, 128)","(None, 28, 28, 128)",512,False,"{
+  ""name"": ""conv3_block1_1_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv3_block1_1_relu,Activation,"(None, 28, 28, 128)","(None, 28, 28, 128)",0,False,"{
+  ""name"": ""conv3_block1_1_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv3_block1_2_conv,Conv2D,"(None, 28, 28, 128)","(None, 28, 28, 128)",147584,False,"{
+  ""name"": ""conv3_block1_2_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 128,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(3, 3)",True,same,"(1, 1)",,,
+resnet50,conv3_block1_2_bn,BatchNormalization,"(None, 28, 28, 128)","(None, 28, 28, 128)",512,False,"{
+  ""name"": ""conv3_block1_2_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv3_block1_2_relu,Activation,"(None, 28, 28, 128)","(None, 28, 28, 128)",0,False,"{
+  ""name"": ""conv3_block1_2_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv3_block1_0_conv,Conv2D,"(None, 56, 56, 256)","(None, 28, 28, 512)",131584,False,"{
+  ""name"": ""conv3_block1_0_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 512,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    2,
+    2
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(2, 2)",,,
+resnet50,conv3_block1_3_conv,Conv2D,"(None, 28, 28, 128)","(None, 28, 28, 512)",66048,False,"{
+  ""name"": ""conv3_block1_3_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 512,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv3_block1_0_bn,BatchNormalization,"(None, 28, 28, 512)","(None, 28, 28, 512)",2048,False,"{
+  ""name"": ""conv3_block1_0_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv3_block1_3_bn,BatchNormalization,"(None, 28, 28, 512)","(None, 28, 28, 512)",2048,False,"{
+  ""name"": ""conv3_block1_3_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv3_block1_add,Add,"(None, 28, 28, 512), (None, 28, 28, 512)","(None, 28, 28, 512)",0,False,"{
+  ""name"": ""conv3_block1_add"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  }
+}",,,,,,,,
+resnet50,conv3_block1_out,Activation,"(None, 28, 28, 512)","(None, 28, 28, 512)",0,False,"{
+  ""name"": ""conv3_block1_out"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv3_block2_1_conv,Conv2D,"(None, 28, 28, 512)","(None, 28, 28, 128)",65664,False,"{
+  ""name"": ""conv3_block2_1_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 128,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv3_block2_1_bn,BatchNormalization,"(None, 28, 28, 128)","(None, 28, 28, 128)",512,False,"{
+  ""name"": ""conv3_block2_1_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv3_block2_1_relu,Activation,"(None, 28, 28, 128)","(None, 28, 28, 128)",0,False,"{
+  ""name"": ""conv3_block2_1_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv3_block2_2_conv,Conv2D,"(None, 28, 28, 128)","(None, 28, 28, 128)",147584,False,"{
+  ""name"": ""conv3_block2_2_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 128,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(3, 3)",True,same,"(1, 1)",,,
+resnet50,conv3_block2_2_bn,BatchNormalization,"(None, 28, 28, 128)","(None, 28, 28, 128)",512,False,"{
+  ""name"": ""conv3_block2_2_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv3_block2_2_relu,Activation,"(None, 28, 28, 128)","(None, 28, 28, 128)",0,False,"{
+  ""name"": ""conv3_block2_2_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv3_block2_3_conv,Conv2D,"(None, 28, 28, 128)","(None, 28, 28, 512)",66048,False,"{
+  ""name"": ""conv3_block2_3_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 512,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv3_block2_3_bn,BatchNormalization,"(None, 28, 28, 512)","(None, 28, 28, 512)",2048,False,"{
+  ""name"": ""conv3_block2_3_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv3_block2_add,Add,"(None, 28, 28, 512), (None, 28, 28, 512)","(None, 28, 28, 512)",0,False,"{
+  ""name"": ""conv3_block2_add"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  }
+}",,,,,,,,
+resnet50,conv3_block2_out,Activation,"(None, 28, 28, 512)","(None, 28, 28, 512)",0,False,"{
+  ""name"": ""conv3_block2_out"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv3_block3_1_conv,Conv2D,"(None, 28, 28, 512)","(None, 28, 28, 128)",65664,False,"{
+  ""name"": ""conv3_block3_1_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 128,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv3_block3_1_bn,BatchNormalization,"(None, 28, 28, 128)","(None, 28, 28, 128)",512,False,"{
+  ""name"": ""conv3_block3_1_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv3_block3_1_relu,Activation,"(None, 28, 28, 128)","(None, 28, 28, 128)",0,False,"{
+  ""name"": ""conv3_block3_1_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv3_block3_2_conv,Conv2D,"(None, 28, 28, 128)","(None, 28, 28, 128)",147584,False,"{
+  ""name"": ""conv3_block3_2_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 128,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(3, 3)",True,same,"(1, 1)",,,
+resnet50,conv3_block3_2_bn,BatchNormalization,"(None, 28, 28, 128)","(None, 28, 28, 128)",512,False,"{
+  ""name"": ""conv3_block3_2_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv3_block3_2_relu,Activation,"(None, 28, 28, 128)","(None, 28, 28, 128)",0,False,"{
+  ""name"": ""conv3_block3_2_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv3_block3_3_conv,Conv2D,"(None, 28, 28, 128)","(None, 28, 28, 512)",66048,False,"{
+  ""name"": ""conv3_block3_3_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 512,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv3_block3_3_bn,BatchNormalization,"(None, 28, 28, 512)","(None, 28, 28, 512)",2048,False,"{
+  ""name"": ""conv3_block3_3_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv3_block3_add,Add,"(None, 28, 28, 512), (None, 28, 28, 512)","(None, 28, 28, 512)",0,False,"{
+  ""name"": ""conv3_block3_add"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  }
+}",,,,,,,,
+resnet50,conv3_block3_out,Activation,"(None, 28, 28, 512)","(None, 28, 28, 512)",0,False,"{
+  ""name"": ""conv3_block3_out"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv3_block4_1_conv,Conv2D,"(None, 28, 28, 512)","(None, 28, 28, 128)",65664,False,"{
+  ""name"": ""conv3_block4_1_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 128,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv3_block4_1_bn,BatchNormalization,"(None, 28, 28, 128)","(None, 28, 28, 128)",512,False,"{
+  ""name"": ""conv3_block4_1_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv3_block4_1_relu,Activation,"(None, 28, 28, 128)","(None, 28, 28, 128)",0,False,"{
+  ""name"": ""conv3_block4_1_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv3_block4_2_conv,Conv2D,"(None, 28, 28, 128)","(None, 28, 28, 128)",147584,False,"{
+  ""name"": ""conv3_block4_2_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 128,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(3, 3)",True,same,"(1, 1)",,,
+resnet50,conv3_block4_2_bn,BatchNormalization,"(None, 28, 28, 128)","(None, 28, 28, 128)",512,False,"{
+  ""name"": ""conv3_block4_2_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv3_block4_2_relu,Activation,"(None, 28, 28, 128)","(None, 28, 28, 128)",0,False,"{
+  ""name"": ""conv3_block4_2_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv3_block4_3_conv,Conv2D,"(None, 28, 28, 128)","(None, 28, 28, 512)",66048,False,"{
+  ""name"": ""conv3_block4_3_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 512,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv3_block4_3_bn,BatchNormalization,"(None, 28, 28, 512)","(None, 28, 28, 512)",2048,False,"{
+  ""name"": ""conv3_block4_3_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv3_block4_add,Add,"(None, 28, 28, 512), (None, 28, 28, 512)","(None, 28, 28, 512)",0,False,"{
+  ""name"": ""conv3_block4_add"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  }
+}",,,,,,,,
+resnet50,conv3_block4_out,Activation,"(None, 28, 28, 512)","(None, 28, 28, 512)",0,False,"{
+  ""name"": ""conv3_block4_out"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv4_block1_1_conv,Conv2D,"(None, 28, 28, 512)","(None, 14, 14, 256)",131328,False,"{
+  ""name"": ""conv4_block1_1_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 256,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    2,
+    2
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(2, 2)",,,
+resnet50,conv4_block1_1_bn,BatchNormalization,"(None, 14, 14, 256)","(None, 14, 14, 256)",1024,False,"{
+  ""name"": ""conv4_block1_1_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv4_block1_1_relu,Activation,"(None, 14, 14, 256)","(None, 14, 14, 256)",0,False,"{
+  ""name"": ""conv4_block1_1_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv4_block1_2_conv,Conv2D,"(None, 14, 14, 256)","(None, 14, 14, 256)",590080,False,"{
+  ""name"": ""conv4_block1_2_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 256,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(3, 3)",True,same,"(1, 1)",,,
+resnet50,conv4_block1_2_bn,BatchNormalization,"(None, 14, 14, 256)","(None, 14, 14, 256)",1024,False,"{
+  ""name"": ""conv4_block1_2_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv4_block1_2_relu,Activation,"(None, 14, 14, 256)","(None, 14, 14, 256)",0,False,"{
+  ""name"": ""conv4_block1_2_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv4_block1_0_conv,Conv2D,"(None, 28, 28, 512)","(None, 14, 14, 1024)",525312,False,"{
+  ""name"": ""conv4_block1_0_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 1024,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    2,
+    2
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(2, 2)",,,
+resnet50,conv4_block1_3_conv,Conv2D,"(None, 14, 14, 256)","(None, 14, 14, 1024)",263168,False,"{
+  ""name"": ""conv4_block1_3_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 1024,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv4_block1_0_bn,BatchNormalization,"(None, 14, 14, 1024)","(None, 14, 14, 1024)",4096,False,"{
+  ""name"": ""conv4_block1_0_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv4_block1_3_bn,BatchNormalization,"(None, 14, 14, 1024)","(None, 14, 14, 1024)",4096,False,"{
+  ""name"": ""conv4_block1_3_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv4_block1_add,Add,"(None, 14, 14, 1024), (None, 14, 14, 1024)","(None, 14, 14, 1024)",0,False,"{
+  ""name"": ""conv4_block1_add"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  }
+}",,,,,,,,
+resnet50,conv4_block1_out,Activation,"(None, 14, 14, 1024)","(None, 14, 14, 1024)",0,False,"{
+  ""name"": ""conv4_block1_out"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv4_block2_1_conv,Conv2D,"(None, 14, 14, 1024)","(None, 14, 14, 256)",262400,False,"{
+  ""name"": ""conv4_block2_1_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 256,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv4_block2_1_bn,BatchNormalization,"(None, 14, 14, 256)","(None, 14, 14, 256)",1024,False,"{
+  ""name"": ""conv4_block2_1_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv4_block2_1_relu,Activation,"(None, 14, 14, 256)","(None, 14, 14, 256)",0,False,"{
+  ""name"": ""conv4_block2_1_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv4_block2_2_conv,Conv2D,"(None, 14, 14, 256)","(None, 14, 14, 256)",590080,False,"{
+  ""name"": ""conv4_block2_2_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 256,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(3, 3)",True,same,"(1, 1)",,,
+resnet50,conv4_block2_2_bn,BatchNormalization,"(None, 14, 14, 256)","(None, 14, 14, 256)",1024,False,"{
+  ""name"": ""conv4_block2_2_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv4_block2_2_relu,Activation,"(None, 14, 14, 256)","(None, 14, 14, 256)",0,False,"{
+  ""name"": ""conv4_block2_2_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv4_block2_3_conv,Conv2D,"(None, 14, 14, 256)","(None, 14, 14, 1024)",263168,False,"{
+  ""name"": ""conv4_block2_3_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 1024,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv4_block2_3_bn,BatchNormalization,"(None, 14, 14, 1024)","(None, 14, 14, 1024)",4096,False,"{
+  ""name"": ""conv4_block2_3_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv4_block2_add,Add,"(None, 14, 14, 1024), (None, 14, 14, 1024)","(None, 14, 14, 1024)",0,False,"{
+  ""name"": ""conv4_block2_add"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  }
+}",,,,,,,,
+resnet50,conv4_block2_out,Activation,"(None, 14, 14, 1024)","(None, 14, 14, 1024)",0,False,"{
+  ""name"": ""conv4_block2_out"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv4_block3_1_conv,Conv2D,"(None, 14, 14, 1024)","(None, 14, 14, 256)",262400,False,"{
+  ""name"": ""conv4_block3_1_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 256,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv4_block3_1_bn,BatchNormalization,"(None, 14, 14, 256)","(None, 14, 14, 256)",1024,False,"{
+  ""name"": ""conv4_block3_1_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv4_block3_1_relu,Activation,"(None, 14, 14, 256)","(None, 14, 14, 256)",0,False,"{
+  ""name"": ""conv4_block3_1_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv4_block3_2_conv,Conv2D,"(None, 14, 14, 256)","(None, 14, 14, 256)",590080,False,"{
+  ""name"": ""conv4_block3_2_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 256,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(3, 3)",True,same,"(1, 1)",,,
+resnet50,conv4_block3_2_bn,BatchNormalization,"(None, 14, 14, 256)","(None, 14, 14, 256)",1024,False,"{
+  ""name"": ""conv4_block3_2_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv4_block3_2_relu,Activation,"(None, 14, 14, 256)","(None, 14, 14, 256)",0,False,"{
+  ""name"": ""conv4_block3_2_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv4_block3_3_conv,Conv2D,"(None, 14, 14, 256)","(None, 14, 14, 1024)",263168,False,"{
+  ""name"": ""conv4_block3_3_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 1024,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv4_block3_3_bn,BatchNormalization,"(None, 14, 14, 1024)","(None, 14, 14, 1024)",4096,False,"{
+  ""name"": ""conv4_block3_3_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv4_block3_add,Add,"(None, 14, 14, 1024), (None, 14, 14, 1024)","(None, 14, 14, 1024)",0,False,"{
+  ""name"": ""conv4_block3_add"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  }
+}",,,,,,,,
+resnet50,conv4_block3_out,Activation,"(None, 14, 14, 1024)","(None, 14, 14, 1024)",0,False,"{
+  ""name"": ""conv4_block3_out"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv4_block4_1_conv,Conv2D,"(None, 14, 14, 1024)","(None, 14, 14, 256)",262400,False,"{
+  ""name"": ""conv4_block4_1_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 256,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv4_block4_1_bn,BatchNormalization,"(None, 14, 14, 256)","(None, 14, 14, 256)",1024,False,"{
+  ""name"": ""conv4_block4_1_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv4_block4_1_relu,Activation,"(None, 14, 14, 256)","(None, 14, 14, 256)",0,False,"{
+  ""name"": ""conv4_block4_1_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv4_block4_2_conv,Conv2D,"(None, 14, 14, 256)","(None, 14, 14, 256)",590080,False,"{
+  ""name"": ""conv4_block4_2_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 256,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(3, 3)",True,same,"(1, 1)",,,
+resnet50,conv4_block4_2_bn,BatchNormalization,"(None, 14, 14, 256)","(None, 14, 14, 256)",1024,False,"{
+  ""name"": ""conv4_block4_2_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv4_block4_2_relu,Activation,"(None, 14, 14, 256)","(None, 14, 14, 256)",0,False,"{
+  ""name"": ""conv4_block4_2_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv4_block4_3_conv,Conv2D,"(None, 14, 14, 256)","(None, 14, 14, 1024)",263168,False,"{
+  ""name"": ""conv4_block4_3_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 1024,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv4_block4_3_bn,BatchNormalization,"(None, 14, 14, 1024)","(None, 14, 14, 1024)",4096,False,"{
+  ""name"": ""conv4_block4_3_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv4_block4_add,Add,"(None, 14, 14, 1024), (None, 14, 14, 1024)","(None, 14, 14, 1024)",0,False,"{
+  ""name"": ""conv4_block4_add"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  }
+}",,,,,,,,
+resnet50,conv4_block4_out,Activation,"(None, 14, 14, 1024)","(None, 14, 14, 1024)",0,False,"{
+  ""name"": ""conv4_block4_out"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv4_block5_1_conv,Conv2D,"(None, 14, 14, 1024)","(None, 14, 14, 256)",262400,False,"{
+  ""name"": ""conv4_block5_1_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 256,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv4_block5_1_bn,BatchNormalization,"(None, 14, 14, 256)","(None, 14, 14, 256)",1024,False,"{
+  ""name"": ""conv4_block5_1_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv4_block5_1_relu,Activation,"(None, 14, 14, 256)","(None, 14, 14, 256)",0,False,"{
+  ""name"": ""conv4_block5_1_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv4_block5_2_conv,Conv2D,"(None, 14, 14, 256)","(None, 14, 14, 256)",590080,False,"{
+  ""name"": ""conv4_block5_2_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 256,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(3, 3)",True,same,"(1, 1)",,,
+resnet50,conv4_block5_2_bn,BatchNormalization,"(None, 14, 14, 256)","(None, 14, 14, 256)",1024,False,"{
+  ""name"": ""conv4_block5_2_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv4_block5_2_relu,Activation,"(None, 14, 14, 256)","(None, 14, 14, 256)",0,False,"{
+  ""name"": ""conv4_block5_2_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv4_block5_3_conv,Conv2D,"(None, 14, 14, 256)","(None, 14, 14, 1024)",263168,False,"{
+  ""name"": ""conv4_block5_3_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 1024,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv4_block5_3_bn,BatchNormalization,"(None, 14, 14, 1024)","(None, 14, 14, 1024)",4096,False,"{
+  ""name"": ""conv4_block5_3_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv4_block5_add,Add,"(None, 14, 14, 1024), (None, 14, 14, 1024)","(None, 14, 14, 1024)",0,False,"{
+  ""name"": ""conv4_block5_add"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  }
+}",,,,,,,,
+resnet50,conv4_block5_out,Activation,"(None, 14, 14, 1024)","(None, 14, 14, 1024)",0,False,"{
+  ""name"": ""conv4_block5_out"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv4_block6_1_conv,Conv2D,"(None, 14, 14, 1024)","(None, 14, 14, 256)",262400,False,"{
+  ""name"": ""conv4_block6_1_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 256,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv4_block6_1_bn,BatchNormalization,"(None, 14, 14, 256)","(None, 14, 14, 256)",1024,False,"{
+  ""name"": ""conv4_block6_1_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv4_block6_1_relu,Activation,"(None, 14, 14, 256)","(None, 14, 14, 256)",0,False,"{
+  ""name"": ""conv4_block6_1_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv4_block6_2_conv,Conv2D,"(None, 14, 14, 256)","(None, 14, 14, 256)",590080,False,"{
+  ""name"": ""conv4_block6_2_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 256,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(3, 3)",True,same,"(1, 1)",,,
+resnet50,conv4_block6_2_bn,BatchNormalization,"(None, 14, 14, 256)","(None, 14, 14, 256)",1024,False,"{
+  ""name"": ""conv4_block6_2_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv4_block6_2_relu,Activation,"(None, 14, 14, 256)","(None, 14, 14, 256)",0,False,"{
+  ""name"": ""conv4_block6_2_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv4_block6_3_conv,Conv2D,"(None, 14, 14, 256)","(None, 14, 14, 1024)",263168,False,"{
+  ""name"": ""conv4_block6_3_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 1024,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv4_block6_3_bn,BatchNormalization,"(None, 14, 14, 1024)","(None, 14, 14, 1024)",4096,False,"{
+  ""name"": ""conv4_block6_3_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv4_block6_add,Add,"(None, 14, 14, 1024), (None, 14, 14, 1024)","(None, 14, 14, 1024)",0,False,"{
+  ""name"": ""conv4_block6_add"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  }
+}",,,,,,,,
+resnet50,conv4_block6_out,Activation,"(None, 14, 14, 1024)","(None, 14, 14, 1024)",0,False,"{
+  ""name"": ""conv4_block6_out"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv5_block1_1_conv,Conv2D,"(None, 14, 14, 1024)","(None, 7, 7, 512)",524800,False,"{
+  ""name"": ""conv5_block1_1_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 512,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    2,
+    2
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(2, 2)",,,
+resnet50,conv5_block1_1_bn,BatchNormalization,"(None, 7, 7, 512)","(None, 7, 7, 512)",2048,False,"{
+  ""name"": ""conv5_block1_1_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv5_block1_1_relu,Activation,"(None, 7, 7, 512)","(None, 7, 7, 512)",0,False,"{
+  ""name"": ""conv5_block1_1_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv5_block1_2_conv,Conv2D,"(None, 7, 7, 512)","(None, 7, 7, 512)",2359808,False,"{
+  ""name"": ""conv5_block1_2_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 512,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(3, 3)",True,same,"(1, 1)",,,
+resnet50,conv5_block1_2_bn,BatchNormalization,"(None, 7, 7, 512)","(None, 7, 7, 512)",2048,False,"{
+  ""name"": ""conv5_block1_2_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv5_block1_2_relu,Activation,"(None, 7, 7, 512)","(None, 7, 7, 512)",0,False,"{
+  ""name"": ""conv5_block1_2_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv5_block1_0_conv,Conv2D,"(None, 14, 14, 1024)","(None, 7, 7, 2048)",2099200,False,"{
+  ""name"": ""conv5_block1_0_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 2048,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    2,
+    2
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(2, 2)",,,
+resnet50,conv5_block1_3_conv,Conv2D,"(None, 7, 7, 512)","(None, 7, 7, 2048)",1050624,False,"{
+  ""name"": ""conv5_block1_3_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 2048,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv5_block1_0_bn,BatchNormalization,"(None, 7, 7, 2048)","(None, 7, 7, 2048)",8192,False,"{
+  ""name"": ""conv5_block1_0_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv5_block1_3_bn,BatchNormalization,"(None, 7, 7, 2048)","(None, 7, 7, 2048)",8192,False,"{
+  ""name"": ""conv5_block1_3_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv5_block1_add,Add,"(None, 7, 7, 2048), (None, 7, 7, 2048)","(None, 7, 7, 2048)",0,False,"{
+  ""name"": ""conv5_block1_add"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  }
+}",,,,,,,,
+resnet50,conv5_block1_out,Activation,"(None, 7, 7, 2048)","(None, 7, 7, 2048)",0,False,"{
+  ""name"": ""conv5_block1_out"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv5_block2_1_conv,Conv2D,"(None, 7, 7, 2048)","(None, 7, 7, 512)",1049088,False,"{
+  ""name"": ""conv5_block2_1_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 512,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv5_block2_1_bn,BatchNormalization,"(None, 7, 7, 512)","(None, 7, 7, 512)",2048,False,"{
+  ""name"": ""conv5_block2_1_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv5_block2_1_relu,Activation,"(None, 7, 7, 512)","(None, 7, 7, 512)",0,False,"{
+  ""name"": ""conv5_block2_1_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv5_block2_2_conv,Conv2D,"(None, 7, 7, 512)","(None, 7, 7, 512)",2359808,False,"{
+  ""name"": ""conv5_block2_2_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 512,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(3, 3)",True,same,"(1, 1)",,,
+resnet50,conv5_block2_2_bn,BatchNormalization,"(None, 7, 7, 512)","(None, 7, 7, 512)",2048,False,"{
+  ""name"": ""conv5_block2_2_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv5_block2_2_relu,Activation,"(None, 7, 7, 512)","(None, 7, 7, 512)",0,False,"{
+  ""name"": ""conv5_block2_2_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv5_block2_3_conv,Conv2D,"(None, 7, 7, 512)","(None, 7, 7, 2048)",1050624,False,"{
+  ""name"": ""conv5_block2_3_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 2048,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv5_block2_3_bn,BatchNormalization,"(None, 7, 7, 2048)","(None, 7, 7, 2048)",8192,False,"{
+  ""name"": ""conv5_block2_3_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv5_block2_add,Add,"(None, 7, 7, 2048), (None, 7, 7, 2048)","(None, 7, 7, 2048)",0,False,"{
+  ""name"": ""conv5_block2_add"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  }
+}",,,,,,,,
+resnet50,conv5_block2_out,Activation,"(None, 7, 7, 2048)","(None, 7, 7, 2048)",0,False,"{
+  ""name"": ""conv5_block2_out"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv5_block3_1_conv,Conv2D,"(None, 7, 7, 2048)","(None, 7, 7, 512)",1049088,False,"{
+  ""name"": ""conv5_block3_1_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 512,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv5_block3_1_bn,BatchNormalization,"(None, 7, 7, 512)","(None, 7, 7, 512)",2048,False,"{
+  ""name"": ""conv5_block3_1_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv5_block3_1_relu,Activation,"(None, 7, 7, 512)","(None, 7, 7, 512)",0,False,"{
+  ""name"": ""conv5_block3_1_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv5_block3_2_conv,Conv2D,"(None, 7, 7, 512)","(None, 7, 7, 512)",2359808,False,"{
+  ""name"": ""conv5_block3_2_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 512,
+  ""kernel_size"": [
+    3,
+    3
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""same"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(3, 3)",True,same,"(1, 1)",,,
+resnet50,conv5_block3_2_bn,BatchNormalization,"(None, 7, 7, 512)","(None, 7, 7, 512)",2048,False,"{
+  ""name"": ""conv5_block3_2_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv5_block3_2_relu,Activation,"(None, 7, 7, 512)","(None, 7, 7, 512)",0,False,"{
+  ""name"": ""conv5_block3_2_relu"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,conv5_block3_3_conv,Conv2D,"(None, 7, 7, 512)","(None, 7, 7, 2048)",1050624,False,"{
+  ""name"": ""conv5_block3_3_conv"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""filters"": 2048,
+  ""kernel_size"": [
+    1,
+    1
+  ],
+  ""strides"": [
+    1,
+    1
+  ],
+  ""padding"": ""valid"",
+  ""data_format"": ""channels_last"",
+  ""dilation_rate"": [
+    1,
+    1
+  ],
+  ""groups"": 1,
+  ""activation"": ""linear"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""activity_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",linear,"(1, 1)",True,valid,"(1, 1)",,,
+resnet50,conv5_block3_3_bn,BatchNormalization,"(None, 7, 7, 2048)","(None, 7, 7, 2048)",8192,False,"{
+  ""name"": ""conv5_block3_3_bn"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""axis"": 3,
+  ""momentum"": 0.99,
+  ""epsilon"": 1.001e-05,
+  ""center"": true,
+  ""scale"": true,
+  ""beta_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""gamma_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_mean_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""moving_variance_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Ones"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""beta_regularizer"": null,
+  ""gamma_regularizer"": null,
+  ""beta_constraint"": null,
+  ""gamma_constraint"": null,
+  ""synchronized"": false
+}",,,,,,,,
+resnet50,conv5_block3_add,Add,"(None, 7, 7, 2048), (None, 7, 7, 2048)","(None, 7, 7, 2048)",0,False,"{
+  ""name"": ""conv5_block3_add"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  }
+}",,,,,,,,
+resnet50,conv5_block3_out,Activation,"(None, 7, 7, 2048)","(None, 7, 7, 2048)",0,False,"{
+  ""name"": ""conv5_block3_out"",
+  ""trainable"": false,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""activation"": ""relu""
+}",relu,,,,,,,
+resnet50,global_average_pooling2d_31,GlobalAveragePooling2D,"(None, 7, 7, 2048)","(None, 2048)",0,True,"{
+  ""name"": ""global_average_pooling2d_31"",
+  ""trainable"": true,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""data_format"": ""channels_last"",
+  ""keepdims"": false
+}",,,,,,,,
+resnet50,dropout_31,Dropout,"(None, 2048)","(None, 2048)",0,True,"{
+  ""name"": ""dropout_31"",
+  ""trainable"": true,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""rate"": 0.4,
+  ""seed"": null,
+  ""noise_shape"": null
+}",,,,,,,0.4,
+resnet50,dense_62,Dense,"(None, 2048)","(None, 1024)",2098176,True,"{
+  ""name"": ""dense_62"",
+  ""trainable"": true,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""units"": 1024,
+  ""activation"": ""relu"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",relu,,True,,,,,
+resnet50,dense_63,Dense,"(None, 1024)","(None, 1)",1025,True,"{
+  ""name"": ""dense_63"",
+  ""trainable"": true,
+  ""dtype"": {
+    ""module"": ""keras"",
+    ""class_name"": ""DTypePolicy"",
+    ""config"": {
+      ""name"": ""float32""
+    },
+    ""registered_name"": null
+  },
+  ""units"": 1,
+  ""activation"": ""sigmoid"",
+  ""use_bias"": true,
+  ""kernel_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""GlorotUniform"",
+    ""config"": {
+      ""seed"": null
+    },
+    ""registered_name"": null
+  },
+  ""bias_initializer"": {
+    ""module"": ""keras.initializers"",
+    ""class_name"": ""Zeros"",
+    ""config"": {},
+    ""registered_name"": null
+  },
+  ""kernel_regularizer"": null,
+  ""bias_regularizer"": null,
+  ""kernel_constraint"": null,
+  ""bias_constraint"": null
+}",sigmoid,,True,,,,,
