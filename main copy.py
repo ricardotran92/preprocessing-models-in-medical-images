@@ -12,24 +12,9 @@ import tf_keras # keras 2
 # streamlit run app.py
 # http://localhost:8501/
 
-# Custom CSS to set font size
-st.markdown("""
-    <style>
-    body {font-size: 18px;}
-    p { font-size: 18px;}
-    stSelectbox label {
-        font-size: 18px;
-    }
-    .stSelectbox div {
-        font-size: 18px;
-    }
-    .stMarkdown div {
-        font-size: 18px;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
 IMG_SIZE = 224
+
+
 
 st.title('Pathological detection based on Medical images')
 poster = Image.open('model architecture.jpg')
@@ -264,6 +249,34 @@ if uploaded_file is not None:
 
     if st.button('Predict'):
 
+        ## Resize the image
+        # # Option 1: Using tf's load_img()
+        # img_224 = load_img(
+        #     uploaded_file,
+        #     target_size = (224, 224),
+        #     color_mode = COLOR,
+        #     interpolation = INTERPOLATION
+        # )
+        # img_380 = load_img(
+        #     uploaded_file,
+        #     target_size = (380, 380),
+        #     color_mode = COLOR,
+        #     interpolation = INTERPOLATION
+        # )
+        # # Option 2: Using PIL's Image
+        # # img = img.convert(mode='RGB')
+        # # img_224 = img.resize((224, 224), Image.BILINEAR)
+        # # img_380 = img.resize((380, 380), Image.BILINEAR)
+        # # st.image(img_380, caption='Resized image')
+
+        # ## Preprocess the image
+        # img_224 = img_to_array(img_224) # not needed if using tf's load_img()
+        # img_224 = img_224 / 255.0
+        # img_224 = np.expand_dims(img_224, axis=0)
+        # img_380 = img_to_array(img_380)
+        # img_380 = img_380 / 255.0
+        # img_380 = np.expand_dims(img_380, axis=0)
+
         # Read the uploaded file as bytes
         image = uploaded_file.getvalue()
 
@@ -280,9 +293,10 @@ if uploaded_file is not None:
         }
 
         num_classes = len(class_names)
-    
+        
 
-        st.write('Prediction:')
+
+        st.write('Prediction')
 
         for model, prediction in predictions.items():
             # st.write(f'{model}: {prediction}') # print out probabilities
@@ -291,14 +305,7 @@ if uploaded_file is not None:
             else:
                 prediction = np.argmax(prediction, axis=-1)[0]
 
-            # st.write(f'{model}: {class_names[prediction]}. \t\tLabel: {existing_label if label_exists else "Unknown"}')
-            if label_exists:
-                if class_names[prediction] == existing_label:
-                    st.markdown(f"**<span style='color:green'>{model}: {class_names[prediction]}. \t\tLabel: {existing_label}</span>**", unsafe_allow_html=True)
-                else:
-                    st.markdown(f"**<span style='color:red'>{model}: {class_names[prediction]}. \t\tLabel: {existing_label}</span>**", unsafe_allow_html=True)
-            else:
-                st.write(f'{model}: {class_names[prediction]}. \t\tLabel: Unknown')
+            st.write(f'{model}: {class_names[prediction]}. \t\tLabel: {existing_label if label_exists else "Unknown"}')
     
         
 
